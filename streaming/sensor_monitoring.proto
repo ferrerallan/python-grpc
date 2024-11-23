@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package sensor_monitoring;
+
+service SensorMonitoringService {
+  rpc StreamSensorData (stream SensorData) returns (stream Alert) {}
+  // You can add more RPC methods here if needed
+}
+
+message SensorData {
+  string sensor_id = 1;
+  float temperature = 2;
+  float humidity = 3;
+  int64 timestamp = 4;
+  // You can add more fields to SensorData if needed
+}
+
+message Alert {
+  string message = 1;
+  bool critical = 2;
+  // You can add more fields to Alert if needed
+}
